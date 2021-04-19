@@ -1,8 +1,11 @@
-.root {
-  padding: 20px;
+@import '../../variables.scss';
+
+.mainContent {
   display: grid;
+  margin-top: 40px;
   grid-gap: 16px;
   grid-auto-columns: 1fr;
+  justify-items: center;
 }
 
 .filtersContainer {
@@ -13,7 +16,11 @@
 
 .itemsContainer {
   display: grid;
+  max-width: $desktop;
+  width: 100%;
+  padding-left: 0;
   grid-gap: 8px;
+  list-style: none;
 }
 
 .productContainer {

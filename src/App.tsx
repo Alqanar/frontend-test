@@ -1,11 +1,12 @@
-import ProductList from './components/ProductList/ProductList';
+import React, { FC } from 'react';
+import { ProductList } from './components/ProductList/ProductList';
+import { Header } from './components/Header/Header';
 
-function App() {
+export const App: FC = function App() {
   return (
-    <div>
+    <>
+      <Header title="Products" />
       <ProductList />
-    </div>
+    </>
   );
-}
-
-export default App;
+};

@@ -1,12 +1,14 @@
+@import './variables.scss';
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap');
 
 :root {
-
 }
 
 body {
+  height: 100vh;
   margin: 0;
   font-family: 'Montserrat', sans-serif;
+  background-color: $alabaster;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
