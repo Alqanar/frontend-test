@@ -1,7 +1,7 @@
 export interface IItem {
   categoryId: string;
   categoryName: string;
-  categoryType: string;
+  categoryType: CategoryType;
   description: string;
   discount: number | null;
   id: string;
@@ -10,3 +10,5 @@ export interface IItem {
   name: string;
   price: number;
 }
+
+export type CategoryType = 'barley' | 'canola' | 'corn' | 'oats' | 'soybeans' | 'wheat';
