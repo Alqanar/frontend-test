@@ -1,0 +1,35 @@
+@import '../../variables.scss';
+
+.label {
+  padding: 4px 16px;
+  font-size: 14px;
+  line-height: 1.4;
+  color: $blue;
+  background-color: $white;
+  border: 1px solid $blue;
+  border-radius: 8px;
+  transition-duration: $durationTime;
+  transition-property: color, background-color, opacity;
+  cursor: pointer;
+
+  &:hover,
+  &:focus {
+    color: $white;
+    background-color: $blue;
+  }
+
+  &:active {
+    opacity: 0.6;
+  }
+}
+
+input:checked + .label {
+  color: $white;
+  background-color: $blue;
+
+  &:hover,
+  &:focus {
+    color: $blue;
+    background-color: $white;
+  }
+}

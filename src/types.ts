@@ -12,3 +12,9 @@ export interface IItem {
 }
 
 export type CategoryType = 'barley' | 'canola' | 'corn' | 'oats' | 'soybeans' | 'wheat';
+
+export interface ICategoryItem {
+  id: 'string';
+  name: 'string';
+  type: 'string';
+}

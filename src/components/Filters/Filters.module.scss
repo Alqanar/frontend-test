@@ -1,0 +1,47 @@
+@import '../../variables.scss';
+
+.filters {
+  justify-self: flex-start;
+  padding: 21px 20px 24px;
+  background-color: $white;
+  border-radius: $border-radius-card;
+  box-shadow: $box-shadow-card;
+}
+
+.sectionTitle,
+.additionalTitle,
+.list {
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+.sectionTitle {
+  display: inline-flex;
+  font-size: 18px;
+  line-height: 1.5;
+  font-weight: 600;
+  color: $blue;
+
+  &::before {
+    display: block;
+    width: 24px;
+    height: 24px;
+    margin-right: 8px;
+    background-image: url('../../asset/images/filters-image.svg');
+    background-repeat: no-repeat;
+    background-size: 24px 24px;
+    content: '';
+  }
+}
+
+.additionalTitle {
+  font-size: 14px;
+  line-height: 1.4;
+  font-weight: 600;
+  text-transform: uppercase;
+  color: $secondary-200;
+}
+
+.list {
+  padding-left: 0;
+}
