@@ -1,5 +1,5 @@
 import React, { FC } from 'react';
-import barleyJpg from '../../asset/images/barley.jpg';
+import barley from '../../asset/images/barley.jpg';
 import barleyWebp from '../../asset/images/barley.webp';
 import barley2xJpg from '../../asset/images/barley@2x.jpg';
 import barley2xWebp from '../../asset/images/barley@2x.webp';
@@ -35,7 +35,7 @@ interface IPoster {
 
 const POSTERS: Record<CategoryType, IPoster> = {
   barley: {
-    jpg: barleyJpg,
+    jpg: barley,
     jpg2x: barley2xJpg,
     webp: barleyWebp,
     webp2x: barley2xWebp,
@@ -78,8 +78,14 @@ interface IItemImageProps {
 
 export const ItemImage: FC<IItemImageProps> = function ItemImage({ type }) {
   return (
-    <picture>
-      <img className={styles.image} src={POSTERS[type].jpg} alt={`image of the ${type} product type`} />
+    <picture className={styles.imageWrapper}>
+      <source type="image/webp" srcSet={`${POSTERS[type].webp} 1x, ${POSTERS[type].webp2x} 2x`} />
+      <img
+        className={styles.image}
+        src={POSTERS[type].jpg}
+        srcSet={`${POSTERS[type].jpg2x} 2x`}
+        alt={`image of the ${type} product type`}
+      />
     </picture>
   );
 };

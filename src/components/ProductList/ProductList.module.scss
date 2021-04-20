@@ -2,7 +2,9 @@
 
 .mainContent {
   display: grid;
-  margin-top: 40px;
+  max-width: $desktop;
+  width: 100%;
+  margin: 40px auto 10px;
   grid-gap: 16px;
   grid-auto-columns: 1fr;
   justify-items: center;
@@ -16,11 +18,13 @@
 
 .itemsContainer {
   display: grid;
-  max-width: $desktop;
-  width: 100%;
+  margin-top: 0;
+  margin-bottom: 0;
+  padding-bottom: 30px;
   padding-left: 0;
-  grid-gap: 8px;
+  grid-gap: 24px;
   list-style: none;
+  grid-template-columns: repeat(3, 448px);
 }
 
 .productContainer {
