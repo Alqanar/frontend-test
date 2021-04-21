@@ -7,8 +7,8 @@ import { Filters } from '../Filters/Filters';
 import { FilterContext } from '../../contexts';
 
 export const ProductList: FC = function ProductList() {
-  const { items, filter, status, updateFilter } = useProductList();
-  const filterContextData = useMemo(() => ({ filter, updateFilter }), [filter, updateFilter]);
+  const { items, filter, status, updateFilter, resetFilter } = useProductList();
+  const filterContextData = useMemo(() => ({ filter, updateFilter, resetFilter }), [filter, updateFilter, resetFilter]);
 
   const handleFilterIsNewUpdate = () => updateFilter({ isNew: !filter.isNew });
 

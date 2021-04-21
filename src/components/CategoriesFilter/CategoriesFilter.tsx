@@ -7,7 +7,7 @@ import { FilterContext } from '../../contexts';
 export const CategoriesFilter: FC = function CategoriesFilter() {
   const [categories, setCategories] = useState<Array<ICategoryItem>>();
 
-  const { filter, updateFilter } = useContext(FilterContext);
+  const { filter, updateFilter, resetFilter } = useContext(FilterContext);
 
   useEffect(() => {
     fetch('/api/category')
@@ -44,6 +44,15 @@ export const CategoriesFilter: FC = function CategoriesFilter() {
     [filter, updateFilter]
   );
 
+  const resetCategoryFilter = useCallback(
+    event => {
+      event.preventDefault();
+
+      resetFilter();
+    },
+    [resetFilter]
+  );
+
   return (
     <section className={styles.categories}>
       <h3>Category</h3>
@@ -51,7 +60,12 @@ export const CategoriesFilter: FC = function CategoriesFilter() {
       {categories && (
         <ul className={styles.list}>
           <li className={styles.categoryFilterItem} key="all">
-            <CheckboxButton name="All" id="all" isChecked={!Boolean(filter.category.length)} />
+            <CheckboxButton
+              name="All"
+              id="all"
+              isChecked={!Boolean(filter.category.length)}
+              onClick={resetCategoryFilter}
+            />
           </li>
 
           {categories.map((item: ICategoryItem) => (

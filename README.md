@@ -76,11 +76,11 @@ git clone git@github.com:Agro-Club/junior-frontend-test.git
 ```
 2. Установить модули
 ```shell
-npm i
+yarn
 ```
 3. Запустить проект
 ```shell
-npm start
+yarn start
 ```
 
 После запуска проект будет доступен на [http://localhost:3000](http://localhost:3000). Внесённые правки будут сразу же отображаться в браузере (перезагружать страницу для этого не нужно).
