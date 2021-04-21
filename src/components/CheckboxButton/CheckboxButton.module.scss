@@ -15,7 +15,7 @@
   &:hover,
   &:focus {
     color: $white;
-    background-color: $blue;
+    background-color: darken($blue, 10%);
   }
 
   &:active {
@@ -29,7 +29,7 @@ input:checked + .label {
 
   &:hover,
   &:focus {
-    color: $blue;
-    background-color: $white;
+    color: $white;
+    background-color: darken($blue, 10%);
   }
 }

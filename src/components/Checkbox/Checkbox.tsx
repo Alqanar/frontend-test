@@ -1,12 +1,12 @@
 import React, { FC } from 'react';
-import styles from './CheckboxButton.module.scss';
+import styles from './Checkbox.module.scss';
 
-interface ICheckboxButtonProps {
+interface ICheckboxProps {
   name: string;
   id: string;
 }
 
-export const CheckboxButton: FC<ICheckboxButtonProps> = function CheckboxButton({ name, id }) {
+export const Checkbox: FC<ICheckboxProps> = function Checkbox({ name, id }) {
   return (
     <>
       <input className="visual-hidden" type="checkbox" name={name} id={id} />

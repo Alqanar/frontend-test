@@ -2,6 +2,7 @@ import React, { FC } from 'react';
 import { IItem } from '../../types';
 import { ItemImage } from '../ItemImage/ItemImage';
 import styles from './ProductItem.module.scss';
+import { STATUS } from '../../constans';
 
 interface IProductItemProps {
   item: IItem;
@@ -31,8 +32,8 @@ export const ProductItem: FC<IProductItemProps> = function ProductItem({ item })
           <p className={styles.type}>{item.categoryName}</p>
 
           {/* в данном месте, если бы у нас был массив тегов, то следовало делать список (ul) c динамическими элементами списка (li), но так как данные предусматривают или new и/или limited или тегов нет, то реализую без списка и без поддержки переполнения контейнера */}
-          {item.isLimited && <p className={`${styles.tag} ${styles.limited}`}>Limited</p>}
-          {item.isNew && <p className={`${styles.tag} ${styles.new}`}>New</p>}
+          {item.isLimited && <p className={`${styles.tag} ${styles.limited}`}>{STATUS.isLimited}</p>}
+          {item.isNew && <p className={`${styles.tag} ${styles.new}`}>{STATUS.isNew}</p>}
         </div>
 
         <h3 className={styles.title}>{item.name}</h3>

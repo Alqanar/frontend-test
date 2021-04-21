@@ -1,0 +1,44 @@
+@import '../../variables.scss';
+
+.label {
+  position: relative;
+  display: flex;
+  align-items: center;
+  font-size: 14px;
+  line-height: 1.4;
+  cursor: pointer;
+
+  &::before {
+    display: block;
+    width: 20px;
+    height: 20px;
+    margin-right: 10px;
+    border: 1px solid $alto;
+    border-radius: 4px;
+    transition-duration: $durationTime;
+    transition-property: border-color;
+    content: '';
+  }
+
+  &:hover::before,
+  &:focus::before {
+    border-color: $blue;
+  }
+
+  &:active {
+    opacity: 0.6;
+  }
+}
+
+input:checked + .label::after {
+  position: absolute;
+  top: 50%;
+  left: 4px;
+  width: 13px;
+  height: 10px;
+  background-image: url('../../asset/images/check.svg');
+  background-repeat: no-repeat;
+  background-size: 13px 10px;
+  transform: translateY(-50%);
+  content: '';
+}

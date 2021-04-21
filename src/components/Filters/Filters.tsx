@@ -1,6 +1,7 @@
 import React, { FC } from 'react';
 import styles from './Filters.module.scss';
 import { CategoriesFilter } from '../CategoriesFilter/CategoriesFilter';
+import { StatusFilter } from '../StatusFilter/StatusFilter';
 
 export const Filters: FC = function Filters() {
   return (
@@ -9,6 +10,7 @@ export const Filters: FC = function Filters() {
 
       <div className={styles.filtersWrapper}>
         <CategoriesFilter />
+        <StatusFilter />
       </div>
     </section>
   );
