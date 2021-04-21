@@ -8,6 +8,7 @@ export const STATUS = {
 export const INITIAL_STATE: IState = {
   filter: {
     isNew: false,
+    isLimited: false,
     category: [],
   },
   status: Status.IDLE,

@@ -10,8 +10,6 @@ export const ProductList: FC = function ProductList() {
   const { items, filter, status, updateFilter, resetFilter } = useProductList();
   const filterContextData = useMemo(() => ({ filter, updateFilter, resetFilter }), [filter, updateFilter, resetFilter]);
 
-  const handleFilterIsNewUpdate = () => updateFilter({ isNew: !filter.isNew });
-
   return (
     <main className={styles.mainContent}>
       <FilterContext.Provider value={filterContextData}>
@@ -19,11 +17,9 @@ export const ProductList: FC = function ProductList() {
       </FilterContext.Provider>
 
       <div>
-        <label htmlFor="is_new">Is new</label>
-        <input id="is_new" type="checkbox" onChange={handleFilterIsNewUpdate} checked={filter.isNew} />
-
         <div>Status: {status}</div>
       </div>
+
       <section>
         <h2 className="visual-hidden">List of goods</h2>
 

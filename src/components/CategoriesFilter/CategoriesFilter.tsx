@@ -63,7 +63,7 @@ export const CategoriesFilter: FC = function CategoriesFilter() {
             <CheckboxButton
               name="All"
               id="all"
-              isChecked={!Boolean(filter.category.length)}
+              isChecked={!Boolean(filter.category.length) && !filter.isLimited && !filter.isNew}
               onClick={resetCategoryFilter}
             />
           </li>

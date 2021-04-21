@@ -100,6 +100,7 @@ export const useProductList = () => {
     const serializeFilter = (filter: IFilter) => [
       ...filter.category.map(categoryId => `category[]=${categoryId}`),
       `isNew=${filter.isNew}`,
+      `isLimited=${filter.isLimited}`,
     ].join('&')
 
     fetch(`/api/product?${serializeFilter(state.filter)}`)

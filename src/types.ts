@@ -21,6 +21,7 @@ export interface ICategoryItem {
 
 export interface IFilter {
   isNew: boolean;
+  isLimited: boolean;
   category: Array<string>;
 }
 
