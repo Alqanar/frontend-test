@@ -17,9 +17,9 @@ export const ProductList: FC = function ProductList() {
       <div>
         <label htmlFor="is_new">Is new</label>
         <input id="is_new" type="checkbox" onChange={handleFilterIsNewUpdate} checked={filter.isNew} />
-      </div>
 
-      <div>Status: {status}</div>
+        <div>Status: {status}</div>
+      </div>
 
       <section>
         <h2 className="visual-hidden">List of goods</h2>

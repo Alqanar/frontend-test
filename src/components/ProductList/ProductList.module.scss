@@ -5,9 +5,9 @@
   max-width: $desktop;
   width: 100%;
   margin: 40px auto 10px;
-  grid-gap: 16px;
-  grid-auto-columns: 1fr;
-  justify-items: center;
+  grid-row-gap: 40px;
+  grid-column-gap: 24px;
+  grid-template-columns: repeat(3, 448px);
 }
 
 .filtersContainer {
