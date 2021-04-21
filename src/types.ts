@@ -18,3 +18,21 @@ export interface ICategoryItem {
   name: 'string';
   type: 'string';
 }
+
+export interface IFilter {
+  isNew: boolean;
+  category: Array<string>;
+}
+
+export enum Status {
+  IDLE = 'idle',
+  WORK = 'work',
+  SUCCESS = 'success',
+  ERROR = 'error',
+}
+
+export interface IState {
+  filter: IFilter;
+  status: Status;
+  items: Array<IItem>;
+}

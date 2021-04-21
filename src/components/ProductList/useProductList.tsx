@@ -1,24 +1,6 @@
 import { useCallback, useEffect, useReducer } from 'react';
-
-import { IItem } from '../../types';
-
-export interface IFilter {
-  isNew: boolean;
-  category: Array<string>;
-}
-
-enum Status {
-  IDLE = 'idle',
-  WORK = 'work',
-  SUCCESS = 'success',
-  ERROR = 'error',
-}
-
-interface IReducerState {
-  filter: IFilter;
-  status: Status;
-  items: Array<IItem>;
-}
+import { IItem, IFilter, Status, IState } from '../../types';
+import { INITIAL_STATE } from '../../constans';
 
 enum ActionKind {
   FILTER_CHANGE = 'filter:change',
@@ -60,16 +42,7 @@ type Action =
   | IRequestSuccessAction
   | IRequestErrorAction;
 
-const initialState = {
-  filter: {
-    isNew: false,
-    category: [],
-  },
-  status: Status.IDLE, // idle | work | success | error
-  items: [],
-};
-
-const reducer = (state: IReducerState, action: Action): IReducerState => {
+const reducer = (state: IState, action: Action): IState => {
   console.log(`Action: ${action.type}; Payload:`, action.payload);
 
   switch (action.type) {
@@ -88,7 +61,7 @@ const reducer = (state: IReducerState, action: Action): IReducerState => {
         ...state,
         status: Status.WORK,
         filter: {
-          ...initialState.filter,
+          ...INITIAL_STATE.filter,
         },
       };
     }
@@ -115,7 +88,7 @@ const reducer = (state: IReducerState, action: Action): IReducerState => {
 };
 
 export const useProductList = () => {
-  const [state, dispatch] = useReducer(reducer, initialState);
+  const [state, dispatch] = useReducer(reducer, INITIAL_STATE);
 
   const updateFilter = useCallback((filter = {}) => dispatch({ type: ActionKind.FILTER_CHANGE, payload: filter }), []);
 

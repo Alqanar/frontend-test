@@ -1,11 +1,13 @@
-import React, { FC, useEffect, useState } from 'react';
+import React, { FC, useCallback, useContext, useEffect, useState } from 'react';
 import { ICategoryItem } from '../../types';
 import { CheckboxButton } from '../CheckboxButton/CheckboxButton';
 import styles from './CategoriesFilter.module.scss';
-// import { STATUS } from '../../constans';
+import { FilterContext } from '../../contexts';
 
 export const CategoriesFilter: FC = function CategoriesFilter() {
   const [categories, setCategories] = useState<Array<ICategoryItem>>();
+
+  const { filter, updateFilter } = useContext(FilterContext);
 
   useEffect(() => {
     fetch('/api/category')
@@ -21,15 +23,45 @@ export const CategoriesFilter: FC = function CategoriesFilter() {
       });
   }, []);
 
+  const onClick = useCallback(
+    event => {
+      event.preventDefault();
+
+      if (filter.category.includes(event.target.id)) {
+        updateFilter({
+          ...filter,
+          category: filter.category.filter(item => item !== event.target.id),
+        });
+
+        return;
+      }
+
+      updateFilter({
+        ...filter,
+        category: [...filter.category, event.target.id],
+      });
+    },
+    [filter, updateFilter]
+  );
+
   return (
     <section className={styles.categories}>
       <h3>Category</h3>
 
       {categories && (
         <ul className={styles.list}>
+          <li className={styles.categoryFilterItem} key="all">
+            <CheckboxButton name="All" id="all" isChecked={!Boolean(filter.category.length)} />
+          </li>
+
           {categories.map((item: ICategoryItem) => (
             <li className={styles.categoryFilterItem} key={item.id}>
-              <CheckboxButton name={item.name} id={item.id} />
+              <CheckboxButton
+                name={item.name}
+                id={item.id}
+                isChecked={filter.category.includes(item.id)}
+                onClick={onClick}
+              />
             </li>
           ))}
         </ul>
