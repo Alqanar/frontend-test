@@ -20,9 +20,8 @@
     content: '';
   }
 
-  &:hover::before,
-  &:focus::before {
-    border-color: $blue;
+  &:hover::before {
+    border-color: $primary;
   }
 
   &:active {
@@ -41,4 +40,8 @@ input:checked + .label::after {
   background-size: 13px 10px;
   transform: translateY(-50%);
   content: '';
+}
+
+input:focus + .label::before {
+  border-color: $primary;
 }

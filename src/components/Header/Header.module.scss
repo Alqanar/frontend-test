@@ -7,15 +7,19 @@
 }
 
 .headerWrapper {
+  display: flex;
+  align-items: center;
   max-width: $desktop;
   width: 100%;
   margin-right: auto;
   margin-left: auto;
-  padding: 22px 24px;
+  padding: 19px 0 19px;
+  flex-wrap: wrap;
 }
 
 .title {
   margin-top: 0;
+  margin-right: auto;
   margin-bottom: 0;
   font-size: 24px;
   line-height: 1.35;

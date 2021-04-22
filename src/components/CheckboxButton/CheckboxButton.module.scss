@@ -4,18 +4,17 @@
   padding: 4px 16px;
   font-size: 14px;
   line-height: 1.4;
-  color: $blue;
+  color: $primary;
   background-color: $white;
-  border: 1px solid $blue;
+  border: 1px solid $primary;
   border-radius: 8px;
   transition-duration: $durationTime;
   transition-property: color, background-color, opacity;
   cursor: pointer;
 
-  &:hover,
-  &:focus {
+  &:hover {
     color: $white;
-    background-color: darken($blue, 10%);
+    background-color: darken($primary, 10%);
   }
 
   &:active {
@@ -23,15 +22,24 @@
   }
 }
 
+input:focus + .label {
+  color: $white;
+  background-color: darken($primary, 10%);
+}
+
 input:checked + .label {
   color: $white;
-  background-color: $blue;
+  background-color: $primary;
 
-  &:hover,
-  &:focus {
+  &:hover {
     color: $white;
-    background-color: darken($blue, 10%);
+    background-color: darken($primary, 10%);
   }
+}
+
+input:checked:focus + .label {
+  color: $white;
+  background-color: darken($primary, 10%);
 }
 
 input:disabled + .label {
@@ -40,7 +48,7 @@ input:disabled + .label {
 
   &:hover,
   &:focus {
-    color: $blue;
+    color: $primary;
     background-color: $white;
   }
 }
