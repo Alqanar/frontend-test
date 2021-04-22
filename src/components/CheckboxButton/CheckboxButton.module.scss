@@ -33,3 +33,14 @@ input:checked + .label {
     background-color: darken($blue, 10%);
   }
 }
+
+input:disabled + .label {
+  opacity: 0.5;
+  cursor: initial;
+
+  &:hover,
+  &:focus {
+    color: $blue;
+    background-color: $white;
+  }
+}

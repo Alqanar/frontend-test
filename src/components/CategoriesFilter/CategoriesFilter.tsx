@@ -7,7 +7,7 @@ import { FilterContext } from '../../contexts';
 export const CategoriesFilter: FC = function CategoriesFilter() {
   const [categories, setCategories] = useState<Array<ICategoryItem>>();
 
-  const { filter, updateFilter, resetFilter } = useContext(FilterContext);
+  const { filter, updateFilter, resetFilter, categoryItemTypes } = useContext(FilterContext);
 
   useEffect(() => {
     fetch('/api/category')
@@ -74,6 +74,7 @@ export const CategoriesFilter: FC = function CategoriesFilter() {
                 name={item.name}
                 id={item.id}
                 isChecked={filter.category.includes(item.id)}
+                isDisabled={!categoryItemTypes.includes(item.type)}
                 onClick={onClick}
               />
             </li>

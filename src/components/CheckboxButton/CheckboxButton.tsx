@@ -5,6 +5,7 @@ interface ICheckboxButtonProps {
   name: string;
   id: string;
   isChecked?: boolean;
+  isDisabled?: boolean;
   onClick?: (event: React.FormEvent<HTMLInputElement>) => void;
 }
 
@@ -12,11 +13,20 @@ export const CheckboxButton: FC<ICheckboxButtonProps> = function CheckboxButton(
   name,
   id,
   isChecked = false,
+  isDisabled = false,
   onClick,
 }) {
   return (
     <>
-      <input className="visual-hidden" type="checkbox" name={name} id={id} checked={isChecked} onChange={onClick} />
+      <input
+        className="visual-hidden"
+        type="checkbox"
+        name={name}
+        id={id}
+        checked={isChecked}
+        disabled={isDisabled}
+        onChange={onClick}
+      />
       <label className={styles.label} htmlFor={id}>
         {name}
       </label>
