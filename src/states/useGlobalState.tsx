@@ -1,6 +1,6 @@
 import { useCallback, useEffect, useReducer } from 'react';
-import { IItem, IFilter, Status, IState } from '../../types';
-import { INITIAL_STATE } from '../../constans';
+import { IItem, IFilter, Status, IState } from '../types';
+import { INITIAL_STATE } from '../constans';
 
 enum ActionKind {
   FILTER_CHANGE = 'filter:change',
@@ -43,8 +43,6 @@ type Action =
   | IRequestErrorAction;
 
 const reducer = (state: IState, action: Action): IState => {
-  console.log(`Action: ${action.type}; Payload:`, action.payload);
-
   switch (action.type) {
     case ActionKind.FILTER_CHANGE: {
       return {
@@ -101,6 +99,7 @@ export const useProductList = () => {
       ...filter.category.map(categoryId => `category[]=${categoryId}`),
       `isNew=${filter.isNew}`,
       `isLimited=${filter.isLimited}`,
+      `search=${filter.search}`
     ].join('&')
 
     fetch(`/api/product?${serializeFilter(state.filter)}`)

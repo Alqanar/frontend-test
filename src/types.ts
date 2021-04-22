@@ -23,6 +23,7 @@ export interface IFilter {
   isNew: boolean;
   isLimited: boolean;
   category: Array<string>;
+  search: string;
 }
 
 export enum Status {

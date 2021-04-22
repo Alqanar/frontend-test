@@ -1,0 +1,19 @@
+.productList {
+  grid-row-start: 2;
+  grid-column: 1 / 4;
+}
+
+.itemsContainer {
+  display: grid;
+  margin-top: 0;
+  margin-bottom: 0;
+  padding-bottom: 30px;
+  padding-left: 0;
+  grid-gap: 24px;
+  list-style: none;
+  grid-template-columns: repeat(3, 448px);
+}
+
+.productName {
+  font-weight: bold;
+}

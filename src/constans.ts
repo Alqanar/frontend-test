@@ -10,6 +10,7 @@ export const INITIAL_STATE: IState = {
     isNew: false,
     isLimited: false,
     category: [],
+    search: '',
   },
   status: Status.IDLE,
   items: [],
