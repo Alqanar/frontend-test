@@ -1,0 +1,31 @@
+@import '../../variables.scss';
+
+.search {
+  width: 331px;
+  padding: 6px 10px 6px 44px;
+  font-size: 14px;
+  line-height: 26px;
+  font-weight: 500;
+  background-image: url('../../asset/images/search.svg');
+  background-repeat: no-repeat;
+  background-position: left 12px center;
+  background-size: 18px 18px;
+  border: 1px solid $alto;
+  border-radius: 8px;
+  transition-duration: $durationTime;
+  transition-property: border-color, box-shadow;
+  outline: none;
+
+  &::placeholder {
+    color: $secondary-200;
+  }
+
+  &:hover {
+    border-color: $secondary-300;
+  }
+
+  &:focus {
+    border-color: $secondary-300;
+    box-shadow: inset 0px 0px 0px 1px $secondary-300;
+  }
+}
