@@ -3,7 +3,7 @@ import { IItem, Status } from '../../types';
 import { CardSkeleton } from '../CardSkeleton/CardSkeleton';
 import { ProductItem } from '../ProductItem/ProductItem';
 import styles from './ProductList.module.scss';
-import { ListError } from '../ListError/ListError';
+import { ListError } from '../ErrorMessage/ErrorMessage';
 
 interface IProductListProps {
   items: Array<IItem>;
@@ -18,11 +18,7 @@ const getListItem = (items: Array<IItem>, status: Status) => {
 
     if (status === Status.WORK) {
       for (let i = 0; i < 6; i++) {
-        listItems.push(
-          <li key={i}>
-            <CardSkeleton />
-          </li>
-        );
+        listItems.push(<CardSkeleton key={i} />);
       }
     } else if (status === Status.SUCCESS) {
       listItems = items.map((item: IItem) => <ProductItem key={item.id} item={item} />);

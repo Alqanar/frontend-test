@@ -1,30 +1,71 @@
-import React, { FC, useCallback, useContext, useEffect, useState } from 'react';
-import { ICategoryItem } from '../../types';
+import React, { FC, useCallback, useContext, ChangeEvent } from 'react';
+import { ICategoryItem, Status, IFilter } from '../../types';
 import { CheckboxButton } from '../CheckboxButton/CheckboxButton';
 import styles from './CategoriesFilter.module.scss';
 import { FilterContext } from '../../contexts';
+import { useCategoryState } from '../../states/useCategoryState';
+
+const getCategoryList = (
+  items: Array<ICategoryItem>,
+  status: Status,
+  filter: IFilter,
+  categoryItemTypes: Array<string>,
+  reload: () => void,
+  resetCategoryFilter: (event: ChangeEvent<HTMLInputElement>) => void,
+  onClick: (event: ChangeEvent<HTMLInputElement>) => void
+) => {
+  if (status === Status.ERROR) {
+    return (
+      <button className={styles.reloadButton} onClick={reload}>
+        Loading error. Try again
+      </button>
+    );
+  } else {
+    const listItems: React.ReactNode[] = [];
+
+    if (status === Status.WORK) {
+      for (let i = 0; i < 6; i++) {
+        listItems.push(<li className={styles.skeletonCategory} key={i}></li>);
+      }
+    } else if (status === Status.SUCCESS) {
+      listItems.push(
+        <li className={styles.categoryFilterItem} key="all">
+          <CheckboxButton
+            name="All"
+            id="all"
+            isChecked={!Boolean(filter.category.length) && !filter.isLimited && !filter.isNew}
+            onClick={resetCategoryFilter}
+          />
+        </li>
+      );
+
+      for (let i = 0; i < items.length; i++) {
+        const item = items[i];
+
+        listItems.push(
+          <li className={styles.categoryFilterItem} key={item.id}>
+            <CheckboxButton
+              name={item.name}
+              id={item.id}
+              isChecked={filter.category.includes(item.id)}
+              isDisabled={!categoryItemTypes.includes(item.type)}
+              onClick={onClick}
+            />
+          </li>
+        );
+      }
+    }
+
+    return <ul className={styles.list}>{listItems}</ul>;
+  }
+};
 
 export const CategoriesFilter: FC = function CategoriesFilter() {
-  const [categories, setCategories] = useState<Array<ICategoryItem>>();
-
   const { filter, updateFilter, resetFilter, categoryItemTypes } = useContext(FilterContext);
+  const [categories, requestStatus, reload] = useCategoryState();
 
-  useEffect(() => {
-    fetch('/api/category')
-      .then(res => {
-        if (!res.ok || res.status !== 200) {
-          throw new Error(`Request failed with status code ${res.status}`);
-        }
-        return res.json();
-      })
-      .then(data => setCategories(data))
-      .catch(err => {
-        console.error(err);
-      });
-  }, []);
-
-  const onClick = useCallback(
-    event => {
+  const handleChangeInput = useCallback(
+    (event: ChangeEvent<HTMLInputElement>) => {
       event.preventDefault();
 
       if (filter.category.includes(event.target.id)) {
@@ -45,7 +86,7 @@ export const CategoriesFilter: FC = function CategoriesFilter() {
   );
 
   const resetCategoryFilter = useCallback(
-    event => {
+    (event: ChangeEvent<HTMLInputElement>) => {
       event.preventDefault();
 
       resetFilter();
@@ -56,31 +97,16 @@ export const CategoriesFilter: FC = function CategoriesFilter() {
   return (
     <section className={styles.categories}>
       <h3>Category</h3>
-
-      {categories && (
-        <ul className={styles.list}>
-          <li className={styles.categoryFilterItem} key="all">
-            <CheckboxButton
-              name="All"
-              id="all"
-              isChecked={!Boolean(filter.category.length) && !filter.isLimited && !filter.isNew}
-              onClick={resetCategoryFilter}
-            />
-          </li>
-
-          {categories.map((item: ICategoryItem) => (
-            <li className={styles.categoryFilterItem} key={item.id}>
-              <CheckboxButton
-                name={item.name}
-                id={item.id}
-                isChecked={filter.category.includes(item.id)}
-                isDisabled={!categoryItemTypes.includes(item.type)}
-                onClick={onClick}
-              />
-            </li>
-          ))}
-        </ul>
-      )}
+      {categories &&
+        getCategoryList(
+          categories,
+          requestStatus,
+          filter,
+          categoryItemTypes,
+          reload,
+          resetCategoryFilter,
+          handleChangeInput
+        )}
     </section>
   );
 };

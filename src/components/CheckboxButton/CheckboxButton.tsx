@@ -1,4 +1,4 @@
-import React, { FC } from 'react';
+import React, { FC, ChangeEvent } from 'react';
 import styles from './CheckboxButton.module.scss';
 
 interface ICheckboxButtonProps {
@@ -6,7 +6,7 @@ interface ICheckboxButtonProps {
   id: string;
   isChecked?: boolean;
   isDisabled?: boolean;
-  onClick?: (event: React.FormEvent<HTMLInputElement>) => void;
+  onClick?: (event: ChangeEvent<HTMLInputElement>) => void;
 }
 
 export const CheckboxButton: FC<ICheckboxButtonProps> = function CheckboxButton({

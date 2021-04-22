@@ -35,16 +35,17 @@
   font-size: 20px;
   font-weight: 600;
   color: $white;
-  background-color: $primary;
+  background-color: $orange;
   border: none;
   border-radius: 8px;
   transition-duration: $durationTime;
   transition-property: background-color, opacity;
   cursor: pointer;
+  outline: none;
 
   &:hover,
   &:focus {
-    background-color: darken($primary, 10%);
+    background-color: darken($orange, 10%);
   }
 
   &:active {

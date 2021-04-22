@@ -110,8 +110,7 @@ export const useProductList = () => {
         return res.json();
       })
       .then(data => dispatch({ type: ActionKind.REQUEST_SUCCESS, payload: data.results }))
-      .catch(err => {
-        console.error(err);
+      .catch(() => {
         dispatch({ type: ActionKind.REQUEST_ERROR });
       });
   }, [state.filter]);

@@ -1,6 +1,6 @@
 import React, { FC, useCallback, useContext } from 'react';
 import { FilterContext } from '../../contexts';
-import styles from './ListError.module.scss';
+import styles from './ErrorMessage.module.scss';
 
 export const ListError: FC = function ListError() {
   const { updateFilter, filter } = useContext(FilterContext);
