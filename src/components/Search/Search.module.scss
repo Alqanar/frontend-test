@@ -15,6 +15,7 @@
   transition-duration: $durationTime;
   transition-property: border-color, box-shadow;
   outline: none;
+  appearance: none;
 
   &::placeholder {
     color: $secondary-200;
@@ -27,5 +28,11 @@
   &:focus {
     border-color: $secondary-300;
     box-shadow: inset 0px 0px 0px 1px $secondary-300;
+  }
+}
+
+@media (max-width: $max-width-phone) {
+  .search {
+    width: 100%;
   }
 }

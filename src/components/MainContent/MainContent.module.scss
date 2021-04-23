@@ -5,13 +5,28 @@
   max-width: $desktop;
   width: 100%;
   margin: 40px auto 10px;
+  padding-right: 24px;
+  padding-left: 24px;
   grid-row-gap: 40px;
   grid-column-gap: 24px;
-  grid-template-columns: repeat(3, 448px);
+  grid-template-columns: repeat(3, 1fr);
 }
 
 .filtersContainer {
   display: grid;
   grid-template-columns: max-content max-content;
   grid-gap: 24px;
+}
+
+@media (max-width: $max-width-tablet) {
+  .mainContent {
+    grid-template-columns: repeat(2, 1fr);
+    grid-column-gap: 0;
+  }
+}
+
+@media (max-width: $max-width-phone) {
+  .mainContent {
+    grid-template-columns: 1fr;
+  }
 }
