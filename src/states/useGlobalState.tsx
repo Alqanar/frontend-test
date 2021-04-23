@@ -60,6 +60,7 @@ const reducer = (state: IState, action: Action): IState => {
         status: Status.WORK,
         filter: {
           ...INITIAL_STATE.filter,
+          search: state.filter.search,
         },
       };
     }
@@ -94,13 +95,14 @@ export const useProductList = () => {
 
   const performRequest = useCallback(() => {
     dispatch({ type: ActionKind.REQUEST_START });
-    // prettier-ignore
-    const serializeFilter = (filter: IFilter) => [
-      ...filter.category.map(categoryId => `category[]=${categoryId}`),
-      `isNew=${filter.isNew}`,
-      `isLimited=${filter.isLimited}`,
-      `search=${filter.search}`
-    ].join('&')
+
+    const serializeFilter = (filter: IFilter) =>
+      [
+        ...filter.category.map(categoryId => `category[]=${categoryId}`),
+        `isNew=${filter.isNew}`,
+        `isLimited=${filter.isLimited}`,
+        `search=${filter.search}`,
+      ].join('&');
 
     fetch(`/api/product?${serializeFilter(state.filter)}`)
       .then(res => {

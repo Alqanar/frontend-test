@@ -1,13 +1,7 @@
-.imageWrapper {
-  align-self: center;
-  flex-shrink: 0;
-  height: 100%;
-  line-height: 0;
-}
-
 .image {
   align-self: center;
-  width: 116px;
+  min-width: 116px;
+  width: auto;
   height: 100%;
   border-radius: 16px;
 }

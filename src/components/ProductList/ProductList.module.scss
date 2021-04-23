@@ -20,6 +20,13 @@
   font-weight: bold;
 }
 
+.noGoods {
+  font-size: 30px;
+  font-weight: 600;
+  text-align: center;
+  color: $secondary-300;
+}
+
 @media (max-width: $max-width-tablet) {
   .itemsContainer {
     grid-template-columns: repeat(2, 1fr);

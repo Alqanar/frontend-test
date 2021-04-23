@@ -10,22 +10,29 @@ interface IProductListProps {
   status: Status;
 }
 
+const SKELETONS_COUNT = 6;
+
 const getListItem = (items: Array<IItem>, status: Status) => {
   if (status === Status.ERROR) {
     return <ListError />;
-  } else {
-    let listItems: React.ReactNode[] = [];
-
-    if (status === Status.WORK) {
-      for (let i = 0; i < 6; i++) {
-        listItems.push(<CardSkeleton key={i} />);
-      }
-    } else if (status === Status.SUCCESS) {
-      listItems = items.map((item: IItem) => <ProductItem key={item.id} item={item} />);
-    }
-
-    return <ul className={styles.itemsContainer}>{listItems}</ul>;
   }
+
+  let listItems: React.ReactNode[] = [];
+
+  if (status === Status.WORK) {
+    for (let i = 0; i < SKELETONS_COUNT; i++) {
+      listItems.push(<CardSkeleton key={i} />);
+    }
+  } else if (status === Status.SUCCESS) {
+    console.log(Boolean(items.length));
+    if (Boolean(items.length)) {
+      listItems = items.map((item: IItem) => <ProductItem key={item.id} item={item} />);
+    } else {
+      return <p className={styles.noGoods}>No products were found by the set of filters</p>;
+    }
+  }
+
+  return <ul className={styles.itemsContainer}>{listItems}</ul>;
 };
 
 export const ProductList: FC<IProductListProps> = function ProductList({ items, status }) {

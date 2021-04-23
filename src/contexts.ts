@@ -9,19 +9,9 @@ interface IFilterContext {
   categoryItemTypes: Array<string>;
 }
 
-interface ISearchContext {
-  search: string;
-  updateSearch: (search: string) => void;
-}
-
 export const FilterContext = createContext<IFilterContext>({
   filter: { ...INITIAL_STATE.filter },
   updateFilter: a => a,
   resetFilter: () => 1,
   categoryItemTypes: [],
-});
-
-export const SearchContext = createContext<ISearchContext>({
-  search: INITIAL_STATE.filter.search,
-  updateSearch: a => a,
 });
