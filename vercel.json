@@ -8,7 +8,7 @@
       "use": "@now/node"
     },
     {
-      "src": "/build/*",
+      "src": "/build/**/*",
       "use": "@now/static"
     }
   ],
