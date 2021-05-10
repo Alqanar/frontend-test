@@ -28,3 +28,5 @@ yarn-error.log*
 .code
 package-lock.json
 src/asset/images/originals
+
+.vercel
