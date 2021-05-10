@@ -24,7 +24,6 @@ const getListItem = (items: Array<IItem>, status: Status) => {
       listItems.push(<CardSkeleton key={i} />);
     }
   } else if (status === Status.SUCCESS) {
-    console.log(Boolean(items.length));
     if (Boolean(items.length)) {
       listItems = items.map((item: IItem) => <ProductItem key={item.id} item={item} />);
     } else {

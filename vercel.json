@@ -16,6 +16,11 @@
     { "src": "/api/(.*)", "dest": "/dist/server/main.js" },
     { "handle": "filesystem" },
     { "src": "/static/(.*)", "dest": "/build/static/$1" },
+    { "src": "/manifest.json", "dest": "/build/manifest.json" },
+    { "src": "/favicon.svg", "dest": "/build/favicon.svg" },
+    { "src": "/logo192.png", "dest": "/build/logo192.png" },
+    { "src": "/logo512.png", "dest": "/build/logo512.png" },
+    { "src": "/robots.txt", "dest": "/build/robots.txt" },
     { "src": "/(.*)", "dest": "/build/index.html" }
   ]
 }

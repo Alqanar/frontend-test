@@ -57,7 +57,7 @@
 
 1. Склонировать репозиторий 
 ```shell
-git clone git@github.com:Agro-Club/junior-frontend-test.git
+git clone git@github.com:Alqanar/frontend-test.git
 ```
 2. Установить модули
 ```shell
