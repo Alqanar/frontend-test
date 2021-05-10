@@ -1,0 +1,21 @@
+{
+  "github": {
+    "enabled": false
+  },
+  "builds": [
+    {
+      "src": "/dist/server/main.js",
+      "use": "@now/node"
+    },
+    {
+      "src": "/build/*",
+      "use": "@now/static"
+    }
+  ],
+  "routes": [
+    { "src": "/api/(.*)", "dest": "/dist/server/main.js" },
+    { "handle": "filesystem" },
+    { "src": "/static/(.*)", "dest": "/build/static/$1" },
+    { "src": "/(.*)", "dest": "/build/index.html" }
+  ]
+}

@@ -67,6 +67,9 @@
   },
   "scripts": {
     "start": "set ESLINT_NO_DEV_ERRORS=true && concurrently yarn:client yarn:server",
+    "build": "yarn build:server && yarn build:client",
+    "build:server": "nest build -p server/tsconfig.build.json",
+    "build:client": "react-scripts build",
     "client": "react-scripts start",
     "server": "set NODE_ENV=development && nest start -p server/tsconfig.build.json --watch",
     "lint": "eslint './src/**/*.{js,ts,tsx}' --quiet --fix"
